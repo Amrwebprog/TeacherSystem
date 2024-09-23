@@ -23,6 +23,7 @@ const primaryContent = document.getElementById('primaryContent');
 const kgLevel = document.getElementById('kgLevel');
 const kg1Content = document.getElementById('kg1Content');
 const kg2Content = document.getElementById('kg2Content');
+const loadingOverlay = document.getElementById('loadingOverlay');
 
 // Toggle visibility between KG and Primary/Prep/High
 kgCheckbox.addEventListener('change', () => {
@@ -95,6 +96,9 @@ document.getElementById('schoolForm').addEventListener('submit', async (event) =
     // Validate form
     if (!validateForm()) return;
 
+    // Show the loading overlay
+    loadingOverlay.style.display = 'flex';
+
     let formData = {};
     const selectedDate = document.getElementById('date').value;
     const day = new Date(selectedDate).toLocaleString('en-US', { weekday: 'long' });
@@ -137,6 +141,9 @@ document.getElementById('schoolForm').addEventListener('submit', async (event) =
         const docRef = await addDoc(collection(db, "Daily-plane"), formData);
         console.log("Document written with ID: ", docRef.id);
 
+        // Hide the loading overlay
+        loadingOverlay.style.display = 'none';
+
         // Show SweetAlert success
         Swal.fire({
             icon: 'success',
@@ -146,6 +153,10 @@ document.getElementById('schoolForm').addEventListener('submit', async (event) =
 
     } catch (error) {
         console.error("Error adding document: ", error);
+
+        // Hide the loading overlay
+        loadingOverlay.style.display = 'none';
+
         Swal.fire({
             icon: 'error',
             title: 'Error',
