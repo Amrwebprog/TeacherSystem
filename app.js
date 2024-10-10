@@ -99,20 +99,21 @@ function validateForm() {
 document.getElementById('schoolForm').addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    // Check the current time
-    const currentTime = new Date();
-    const currentHour = currentTime.getHours();
-    const currentMinute = currentTime.getMinutes();
+   // Check the current time
+const currentTime = new Date();
+const currentHour = currentTime.getHours();
+const currentMinute = currentTime.getMinutes();
 
-    // If the current time is 12:00 PM or later, do not allow form submission
-    if (currentHour > 12 || (currentHour === 12 && currentMinute > 0)) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'لا يمكن إرسال البيانات بعد الساعة 12 ظهرًا!',
-        });
-        return;
-    }
+// If the current time is 3:00 PM or later, do not allow form submission
+if (currentHour > 15 || (currentHour === 15 && currentMinute > 0)) {
+    Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'لا يمكن إرسال البيانات بعد الساعة 3 عصرًا!',
+    });
+    return;
+}
+
 
     // Validate form
     if (!validateForm()) return;
