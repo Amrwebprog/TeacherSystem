@@ -3,7 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/fireba
 import { addDoc, collection, getFirestore } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-storage.js";
 
-const firebaseConfig = {
+/* const firebaseConfig = {
     apiKey: "AIzaSyDSaeLi02XG-g6AnSCKge3rDTK4psbnD1I",
     authDomain: "daily-plane.firebaseapp.com",
     projectId: "daily-plane",
@@ -16,7 +16,7 @@ const firebaseConfig = {
 // Initialize Firebase services
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const storage = getStorage(app);
+const storage = getStorage(app); */
 
 // Select elements
 const kgCheckbox = document.getElementById('kgCheckbox');
